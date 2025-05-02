@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    padding: 20px 10px;
+    gap: 15px;
+    border-bottom: solid 1px rgb(20 20 20);
+
+    color: black;
+    text-decoration: none;
+}
+
+.container img {
+    width: 80px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.subtitle {
+    word-break: keep-all;
+}
+
+.author {
+    color: gray;
+}
