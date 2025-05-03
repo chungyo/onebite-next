@@ -1,9 +1,23 @@
 import React, {ReactNode} from "react";
 import SearchableLayout from "@/components/searchable-layout";
-import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
+import {GetServerSidePropsContext, InferGetServerSidePropsType} from "next";
+import fetchBooks from "@/lib/fetch-books";
 
-export default function Page() {
+export const getServerSideProps = async(context: GetServerSidePropsContext) => {
+    // context에는 현재 브라우저에 대한 정보가 담겨있다.
+    const q = context.query.q as string;
+
+    const books = await fetchBooks(q)
+
+    return{
+        props: {
+            books,
+        }
+    }
+}
+
+export default function Page({books}: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
     return (
         <div>
